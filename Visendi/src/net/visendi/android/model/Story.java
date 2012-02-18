@@ -2,19 +2,19 @@ package net.visendi.android.model;
 
 public class Story {
 
-	private Integer id;
+	private String id;
 	private String title;
 	private String desc;
-	private Double dist;
+	private String dist;
 	private String author;
 	private String picture;
 	private String preview;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -34,11 +34,11 @@ public class Story {
 		this.desc = desc;
 	}
 
-	public Double getDist() {
+	public String getDist() {
 		return dist;
 	}
 
-	public void setDist(Double dist) {
+	public void setDist(String dist) {
 		this.dist = dist;
 	}
 
