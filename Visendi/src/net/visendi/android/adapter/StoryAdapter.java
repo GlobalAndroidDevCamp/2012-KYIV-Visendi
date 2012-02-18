@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class StoryAdapter extends ArrayAdapter<Story> {
@@ -29,6 +30,8 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
 		Story item = getItem(position);
 
+		ImageButton image = (ImageButton) convertView
+				.findViewById(R.id.playButton);
 		TextView title = (TextView) convertView.findViewById(R.id.title);
 		TextView author = (TextView) convertView.findViewById(R.id.auth);
 		TextView distance = (TextView) convertView.findViewById(R.id.distance);
@@ -39,6 +42,7 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 		distance.setText(item.getDist() + "");
 		desc.setText(item.getDesc());
 
+		image.setOnClickListener(new OnItemClick(position));
 		return convertView;
 	}
 
