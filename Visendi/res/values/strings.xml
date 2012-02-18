@@ -3,7 +3,7 @@
     <string name="hello">Hello World, VisendiActivity!</string>
     <string name="app_name">Visendi</string>
     <string name="tab_stories">Stories</string>
-    <string name="tab_favourite">Favourite</string>
+    <string name="tab_favourite">Downloads</string>
     <string name="url_stories">http://188.40.14.158:8080/visendi/stories.json</string>
     <string name="empty_list">No travel stories for now</string>
 </resources>
