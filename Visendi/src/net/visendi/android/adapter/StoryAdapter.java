@@ -3,8 +3,10 @@ package net.visendi.android.adapter;
 import java.util.List;
 
 import net.visendi.android.R;
+import net.visendi.android.Tutorial3;
 import net.visendi.android.model.Story;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -56,6 +58,7 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
 		public void onClick(View v) {
 			Story item = getItem(position);
+			getContext().startActivity(new Intent(getContext(), Tutorial3.class));
 		}
 	}
 }
