@@ -2,4 +2,6 @@
 <resources>
     <string name="hello">Hello World, VisendiActivity!</string>
     <string name="app_name">Visendi</string>
+    <string name="tab_stories">Stories</string>
+    <string name="tab_favourite">Favourite</string>
 </resources>
