@@ -406,9 +406,10 @@ containing a value of this type.
         public static final int abs__screen_action_bar_overlay=0x7f030008;
         public static final int abs__screen_simple=0x7f030009;
         public static final int abs__simple_spinner_item=0x7f03000a;
-        public static final int main=0x7f03000b;
-        public static final int player_layout=0x7f03000c;
-        public static final int story_item=0x7f03000d;
+        public static final int detailed_view=0x7f03000b;
+        public static final int main=0x7f03000c;
+        public static final int player_layout=0x7f03000d;
+        public static final int story_item=0x7f03000e;
     }
     public static final class string {
         public static final int abs__tab_under_ab_tag=0x7f080000;
@@ -419,6 +420,7 @@ containing a value of this type.
         public static final int tab_stories=0x7f080003;
         public static final int track_url_template=0x7f080007;
         public static final int url_stories=0x7f080005;
+        public static final int zip_url_template=0x7f080008;
     }
     public static final class style {
         public static final int ActionTheme=0x7f0a001f;
