@@ -6,4 +6,5 @@
     <string name="tab_favourite">Downloads</string>
     <string name="url_stories">http://188.40.14.158:8080/visendi/stories.json</string>
     <string name="empty_list">No travel stories for now</string>
+    <string name="track_url_template">http://188.40.14.158:8080/visendi/resources/{0}/preview.ogg</string>
 </resources>

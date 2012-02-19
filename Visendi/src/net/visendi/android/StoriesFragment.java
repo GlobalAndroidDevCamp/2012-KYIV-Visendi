@@ -32,7 +32,7 @@ public class StoriesFragment extends ListFragment implements
 	public void onLoadFinished(Loader<Storys> loader, Storys data) {
 		setListShown(true);
 		if (data != null) {
-			setListAdapter(new StoryAdapter(getActivity(), data));
+			setListAdapter(new StoryAdapter((VisendiActivity)getActivity(), data));
 		}
 	}
 

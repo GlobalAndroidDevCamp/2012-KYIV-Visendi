@@ -1,12 +1,13 @@
 package net.visendi.android.adapter;
 
+import java.text.MessageFormat;
 import java.util.List;
 
+import net.visendi.android.PlayerListener;
 import net.visendi.android.R;
-import net.visendi.android.Tutorial3;
+import net.visendi.android.VisendiActivity;
 import net.visendi.android.model.Story;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,7 +20,7 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
 	private LayoutInflater infalter;
 
-	public StoryAdapter(Context context, List<Story> objects) {
+	public StoryAdapter(VisendiActivity context, List<Story> objects) {
 		super(context, 0, objects);
 		infalter = LayoutInflater.from(context);
 	}
@@ -58,7 +59,18 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
 		public void onClick(View v) {
 			Story item = getItem(position);
-			getContext().startActivity(new Intent(getContext(), Tutorial3.class));
+			Context context = getContext();
+			if (context instanceof PlayerListener) {
+				PlayerListener playerListener = (PlayerListener) context;
+				playerListener.setMusicTitle(item.getTitle());
+				playerListener
+						.setMusicStringUrl(MessageFormat
+								.format("http://188.40.14.158:8080/visendi/resources/{0}/preview.ogg",
+										item.getId()));
+				playerListener.getPlayerFragment().startStreamingAudio();
+		//		startStreamingAudio()
+			}
+			
 		}
 	}
 }
