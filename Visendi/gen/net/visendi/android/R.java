@@ -372,22 +372,22 @@ containing a value of this type.
         public static final int abs__tab_icon=0x7f040013;
         public static final int abs__textButton=0x7f040019;
         public static final int abs__up=0x7f040010;
-        public static final int auth=0x7f040023;
-        public static final int button_play=0x7f040025;
-        public static final int desc=0x7f040022;
-        public static final int distance=0x7f040020;
+        public static final int auth=0x7f040025;
+        public static final int button_play=0x7f040020;
+        public static final int desc=0x7f040024;
+        public static final int distance=0x7f040022;
         public static final int fragmentContent=0x7f04001d;
         public static final int homeAsUp=0x7f040006;
         public static final int listMode=0x7f040002;
         public static final int normal=0x7f040001;
-        public static final int playButton=0x7f04001f;
+        public static final int playButton=0x7f040021;
         public static final int player=0x7f04001e;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
-        public static final int text_kb_streamed=0x7f040024;
-        public static final int title=0x7f040021;
+        public static final int text_kb_streamed=0x7f04001f;
+        public static final int title=0x7f040023;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -407,8 +407,8 @@ containing a value of this type.
         public static final int abs__screen_simple=0x7f030009;
         public static final int abs__simple_spinner_item=0x7f03000a;
         public static final int main=0x7f03000b;
-        public static final int story_item=0x7f03000c;
-        public static final int tutorial3=0x7f03000d;
+        public static final int player_layout=0x7f03000c;
+        public static final int story_item=0x7f03000d;
     }
     public static final class string {
         public static final int abs__tab_under_ab_tag=0x7f080000;

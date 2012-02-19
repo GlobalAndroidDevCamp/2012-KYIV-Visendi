@@ -68,7 +68,6 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 								.format("http://188.40.14.158:8080/visendi/resources/{0}/preview.ogg",
 										item.getId()));
 				playerListener.getPlayerFragment().startStreamingAudio();
-		//		startStreamingAudio()
 			}
 			
 		}
