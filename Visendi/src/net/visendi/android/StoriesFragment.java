@@ -103,19 +103,21 @@ public class StoriesFragment extends ListFragment implements
 		context.startActivity(intent);
 	}
 
-	public static long process(Context context, final Story song) {
-		final long id = DownloadsService.nextId(context);
+	public static long process(Context context, final Story story) {
+	//	final long id = DownloadsService.nextId(context);
 		final Request request = new Request();
-		request.setId(id);
+		//request.setId(id);
 		
+		Long id = Long.valueOf(story.getId());
+		request.setId(id);
 		String url = MessageFormat.format(
 				context.getString(R.string.zip_url_template),
-				song.getId());
+				story.getId());
 		request.setUri(url);
-		request.setTitle(song.getTitle());
-		request.setDescription(song.getAuthor());
+		request.setTitle(story.getTitle());
+		request.setDescription(story.getAuthor());
 		request.setDestinationUri(Uri.fromFile(new File(
-				getDestinationDirectory(), song.getId())).toString());
+				getDestinationDirectory(), story.getId())).toString());
 		final Intent requestIntent = new Intent(context, DownloadsService.class)
 				.setAction(DownloadsService.ACTION_ENQUEUE).putExtra(
 						DownloadsService.EXTRA_REQUEST, request);

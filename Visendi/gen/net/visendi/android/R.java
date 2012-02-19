@@ -350,6 +350,7 @@ containing a value of this type.
         public static final int button_pause=0x7f020029;
         public static final int icon=0x7f02002a;
         public static final int media_playback_start=0x7f02002b;
+        public static final int paypal=0x7f02002c;
     }
     public static final class id {
         public static final int abs__action_bar=0x7f04001b;
@@ -372,22 +373,26 @@ containing a value of this type.
         public static final int abs__tab_icon=0x7f040013;
         public static final int abs__textButton=0x7f040019;
         public static final int abs__up=0x7f040010;
-        public static final int auth=0x7f040025;
-        public static final int button_play=0x7f040020;
-        public static final int desc=0x7f040024;
-        public static final int distance=0x7f040022;
-        public static final int fragmentContent=0x7f04001d;
+        public static final int auth=0x7f040029;
+        public static final int button_play=0x7f040025;
+        public static final int buyButton=0x7f040020;
+        public static final int coverImage=0x7f04001f;
+        public static final int desc=0x7f040028;
+        public static final int description=0x7f040021;
+        public static final int distance=0x7f040027;
+        public static final int fragmentContent=0x7f040022;
         public static final int homeAsUp=0x7f040006;
         public static final int listMode=0x7f040002;
         public static final int normal=0x7f040001;
-        public static final int playButton=0x7f040021;
-        public static final int player=0x7f04001e;
+        public static final int playButton=0x7f040026;
+        public static final int player=0x7f040023;
+        public static final int relativeHeader=0x7f04001e;
         public static final int showCustom=0x7f040008;
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
-        public static final int text_kb_streamed=0x7f04001f;
-        public static final int title=0x7f040023;
+        public static final int text_kb_streamed=0x7f040024;
+        public static final int title=0x7f04001d;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -406,17 +411,24 @@ containing a value of this type.
         public static final int abs__screen_action_bar_overlay=0x7f030008;
         public static final int abs__screen_simple=0x7f030009;
         public static final int abs__simple_spinner_item=0x7f03000a;
-        public static final int detailed_view=0x7f03000b;
-        public static final int main=0x7f03000c;
-        public static final int player_layout=0x7f03000d;
-        public static final int story_item=0x7f03000e;
+        public static final int detailed_header=0x7f03000b;
+        public static final int detailed_view=0x7f03000c;
+        public static final int main=0x7f03000d;
+        public static final int player_layout=0x7f03000e;
+        public static final int story_item=0x7f03000f;
     }
     public static final class string {
         public static final int abs__tab_under_ab_tag=0x7f080000;
         public static final int app_name=0x7f080002;
+        public static final int button_downloaded=0x7f08000e;
+        public static final int button_in_progress=0x7f08000d;
+        public static final int cover_url_template=0x7f080009;
+        public static final int download=0x7f08000b;
         public static final int empty_list=0x7f080006;
         public static final int hello=0x7f080001;
+        public static final int stories_empty=0x7f08000c;
         public static final int tab_favourite=0x7f080004;
+        public static final int tab_map=0x7f08000a;
         public static final int tab_stories=0x7f080003;
         public static final int track_url_template=0x7f080007;
         public static final int url_stories=0x7f080005;

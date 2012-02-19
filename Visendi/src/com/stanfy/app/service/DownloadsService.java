@@ -81,8 +81,8 @@ public class DownloadsService extends Service {
 	/** Notification manager. */
 	private NotificationManager notificationManager;
 
-	private Set<String> storiesInProgress = new HashSet<String>();
-	private Set<String> storiesDownloaded = new HashSet<String>();
+	private Set<String> storiesInProgress;
+	private Set<String> storiesDownloaded;
 	private static final String STORIES_IN_PROGRESS = "storiesInProgress";
 	private static final String STORIES_DOWNLOADED = "storiesDownloaded";
 
@@ -97,6 +97,8 @@ public class DownloadsService extends Service {
 
 	/** @return new download task */
 	protected DownloadTask createDownloadTask() {
+		storiesDownloaded = DownloadsService.getDownloadedStories(this);
+		storiesInProgress = DownloadsService.getInProgressStories(this);
 		return new DownloadTask();
 	}
 
@@ -190,7 +192,8 @@ public class DownloadsService extends Service {
 	}
 
 	public void putStoryInProgress(long id) {
-		storiesInProgress.add(Long.toString(id));
+		String string = Long.toString(id);
+		storiesInProgress.add(string);
 		SharedPreferences sharedPreferences = getSharedPreferences(
 				STORIES_IN_PROGRESS, MODE_PRIVATE);
 		Editor edit = sharedPreferences.edit();
@@ -198,7 +201,7 @@ public class DownloadsService extends Service {
 		edit.commit();
 		
 
-		Log.d(TAG, "inProgressStory");
+		Log.d(TAG, "inProgressStory"+string + ":"+id);
 
 	}
 
@@ -213,7 +216,7 @@ public class DownloadsService extends Service {
 
 			edit.commit();
 
-			Log.d(TAG, "removeStory");
+			Log.d(TAG, "removeStory:"+stringId + ":"+id);
 			storiesDownloaded.add(stringId);
 			SharedPreferences sharedPreferencesDown = getSharedPreferences(
 					STORIES_DOWNLOADED, MODE_WORLD_WRITEABLE);
