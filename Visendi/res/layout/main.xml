@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:clickable="false"
+    android:focusable="false"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -9,7 +11,9 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/player"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:clickable="false"
+        android:focusable="false" >
     </LinearLayout>
 
     <fragment
@@ -17,6 +21,8 @@
         android:name="net.visendi.android.PlayerFragment"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:clickable="false"
+        android:focusable="false" />
 
 </RelativeLayout>

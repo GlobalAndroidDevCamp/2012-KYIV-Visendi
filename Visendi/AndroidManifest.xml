@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="net.visendi.android.DetailedActivity"
+            android:name=".DetailedActivity"
             android:label="@string/app_name" >
         </activity>
     </application>

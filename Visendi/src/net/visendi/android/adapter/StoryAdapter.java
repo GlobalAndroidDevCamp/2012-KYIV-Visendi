@@ -3,8 +3,10 @@ package net.visendi.android.adapter;
 import java.text.MessageFormat;
 import java.util.List;
 
+import net.visendi.android.PlayerFragment;
 import net.visendi.android.PlayerListener;
 import net.visendi.android.R;
+import net.visendi.android.StoriesFragment;
 import net.visendi.android.VisendiActivity;
 import net.visendi.android.model.Story;
 import android.content.Context;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -19,9 +22,12 @@ import android.widget.TextView;
 public class StoryAdapter extends ArrayAdapter<Story> {
 
 	private LayoutInflater infalter;
+	private OnItemClickListener listener;
 
-	public StoryAdapter(VisendiActivity context, List<Story> objects) {
+	public StoryAdapter(VisendiActivity context, List<Story> objects,
+			OnItemClickListener onItemClickListener) {
 		super(context, 0, objects);
+		this.listener = onItemClickListener;
 		infalter = LayoutInflater.from(context);
 	}
 
@@ -45,16 +51,15 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 		distance.setText(item.getDist() + "");
 		desc.setText(item.getDesc());
 
-		image.setOnClickListener(new OnItemClick(position));
+		image.setOnClickListener(new PlayerStart(position));
+		
+		convertView.setOnClickListener(new ItemClickWorkAround(position));
 		return convertView;
 	}
 
-	private class OnItemClick implements OnClickListener {
-		int position;
-
-		public OnItemClick(int position) {
-			super();
-			this.position = position;
+	private class PlayerStart extends OnItemClick {
+		public PlayerStart(int position) {
+			super(position);
 		}
 
 		public void onClick(View v) {
@@ -69,7 +74,31 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 										item.getId()));
 				playerListener.getPlayerFragment().startStreamingAudio();
 			}
-			
+
 		}
+
+	}
+	
+	
+	private class ItemClickWorkAround extends OnItemClick {
+		public ItemClickWorkAround(int position) {
+			super(position);
+		}
+
+		public void onClick(View v) {
+			StoriesFragment.startItemDescriptionActivity(getContext(), getItem(position));
+		}
+
+	}
+
+
+	private abstract class OnItemClick implements OnClickListener {
+		int position;
+
+		public OnItemClick(int position) {
+			super();
+			this.position = position;
+		}
+
 	}
 }
