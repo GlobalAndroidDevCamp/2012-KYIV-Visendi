@@ -8,7 +8,9 @@
     <string name="empty_list">No travel stories for now</string>
     <string name="track_url_template">http://188.40.14.158:8080/visendi/resources/{0}/preview.ogg</string>
     <string name="zip_url_template">http://188.40.14.158:8080/visendi/resources/{0}/story.zip</string>
+    <string name="cover_url_template">http://188.40.14.158:8080/visendi/resources/{0}/cover.png</string>
     <string name="tab_map">MAP</string>
     <string name="download">Download</string>
     <string name="stories_empty">No story details</string>
+    <string name="button_in_progress">InProgress...</string>
 </resources>

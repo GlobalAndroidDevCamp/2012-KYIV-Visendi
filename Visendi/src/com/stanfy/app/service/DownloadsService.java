@@ -184,6 +184,11 @@ public class DownloadsService extends Service {
 		return getDownloadedStories(this);
 	}
 
+	public static Set<String> getInProgressStories(Context context) {
+		return context.getSharedPreferences(STORIES_IN_PROGRESS, MODE_PRIVATE)
+				.getStringSet(STORIES_IN_PROGRESS, null);
+	}
+
 	public void putStoryInProgress(long id) {
 		storiesInProgress.add(Long.toString(id));
 		SharedPreferences sharedPreferences = getSharedPreferences(
