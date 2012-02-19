@@ -179,7 +179,7 @@ public class DownloadsService extends Service {
 
 	public static Set<String> getDownloadedStories(Context context) {
 		return context.getSharedPreferences(STORIES_DOWNLOADED, MODE_PRIVATE)
-				.getStringSet(STORIES_DOWNLOADED, null);
+				.getStringSet(STORIES_DOWNLOADED, new HashSet<String>());
 	}
 
 	public Set<String> getDownloadedStories() {
@@ -188,7 +188,7 @@ public class DownloadsService extends Service {
 
 	public static Set<String> getInProgressStories(Context context) {
 		return context.getSharedPreferences(STORIES_IN_PROGRESS, MODE_PRIVATE)
-				.getStringSet(STORIES_IN_PROGRESS, null);
+				.getStringSet(STORIES_IN_PROGRESS, new HashSet<String>());
 	}
 
 	public void putStoryInProgress(long id) {
