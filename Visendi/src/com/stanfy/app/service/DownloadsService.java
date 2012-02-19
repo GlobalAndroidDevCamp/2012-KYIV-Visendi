@@ -80,13 +80,11 @@ public class DownloadsService extends Service {
 
 	/** Notification manager. */
 	private NotificationManager notificationManager;
-	
+
 	private Set<String> storiesInProgress = new HashSet<String>();
 	private Set<String> storiesDownloaded = new HashSet<String>();
 	private static final String STORIES_IN_PROGRESS = "storiesInProgress";
 	private static final String STORIES_DOWNLOADED = "storiesDownloaded";
-	
-	
 
 	/** @return next unique download ID */
 	public static final synchronized long nextId(final Context context) {
@@ -176,31 +174,41 @@ public class DownloadsService extends Service {
 		}
 		removeStoryFromProgress(request.id);
 	}
-	
-	public Set<String> getDownloadedStories() {
-		return getSharedPreferences(STORIES_DOWNLOADED, MODE_PRIVATE).getStringSet(STORIES_DOWNLOADED, null);
+
+	public static Set<String> getDownloadedStories(Context context) {
+		return context.getSharedPreferences(STORIES_DOWNLOADED, MODE_PRIVATE)
+				.getStringSet(STORIES_DOWNLOADED, null);
 	}
-	
+
+	public Set<String> getDownloadedStories() {
+		return getDownloadedStories(this);
+	}
+
 	public void putStoryInProgress(long id) {
 		storiesInProgress.add(Long.toString(id));
-		SharedPreferences sharedPreferences = getSharedPreferences(STORIES_IN_PROGRESS, MODE_PRIVATE);
+		SharedPreferences sharedPreferences = getSharedPreferences(
+				STORIES_IN_PROGRESS, MODE_PRIVATE);
 		Editor edit = sharedPreferences.edit();
 		edit.putStringSet(STORIES_IN_PROGRESS, storiesInProgress);
 		edit.commit();
 	}
-	
+
 	public void removeStoryFromProgress(long id) {
 		String stringId = Long.toString(id);
-		if(storiesInProgress.contains(stringId)) {
+		if (storiesInProgress.contains(stringId)) {
 			storiesInProgress.remove(stringId);
-			SharedPreferences sharedPreferences = getSharedPreferences(STORIES_IN_PROGRESS, MODE_PRIVATE);
+			SharedPreferences sharedPreferences = getSharedPreferences(
+					STORIES_IN_PROGRESS, MODE_PRIVATE);
 			Editor edit = sharedPreferences.edit();
 			edit.putStringSet(STORIES_IN_PROGRESS, storiesInProgress);
 			edit.commit();
-			
+
 			storiesDownloaded.add(stringId);
-			SharedPreferences sharedPreferencesDown = getSharedPreferences(STORIES_DOWNLOADED, MODE_PRIVATE);
-			sharedPreferencesDown.edit().putStringSet(STORIES_DOWNLOADED, storiesDownloaded).commit();
+			SharedPreferences sharedPreferencesDown = getSharedPreferences(
+					STORIES_DOWNLOADED, MODE_PRIVATE);
+			sharedPreferencesDown.edit()
+					.putStringSet(STORIES_DOWNLOADED, storiesDownloaded)
+					.commit();
 		}
 	}
 
@@ -330,9 +338,9 @@ public class DownloadsService extends Service {
 			this.request = request;
 			clickIntent.putExtra(EXTRA_ID, request.id);
 			updateDownloadProgress(null);
-			
+
 			putStoryInProgress(request.id);
-			
+
 			File destination;
 			URLConnection urlConnection;
 			try {
