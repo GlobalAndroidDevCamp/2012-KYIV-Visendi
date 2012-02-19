@@ -1,6 +1,8 @@
 package net.visendi.android.model;
 
-public class Story {
+import java.io.Serializable;
+
+public class Story implements Serializable {
 
 	private String id;
 	private String title;

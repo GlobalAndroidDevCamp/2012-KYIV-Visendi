@@ -56,6 +56,10 @@ public class PlayerFragment extends Fragment {
 		playButton.setEnabled(false);
 		playButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
+				updateState();
+			}
+
+			private void updateState() {
 				if (audioStreamer.getMediaPlayer().isPlaying()) {
 					audioStreamer.getMediaPlayer().pause();
 					playButton
@@ -66,7 +70,6 @@ public class PlayerFragment extends Fragment {
 					playButton.setImageResource(R.drawable.button_pause);
 				}
 				isPlaying = !isPlaying;
-
 			}
 		});
 		startStreamingAudio();
