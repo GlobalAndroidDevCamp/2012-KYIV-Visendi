@@ -13,6 +13,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -54,7 +55,23 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 		image.setOnClickListener(new PlayerStart(position));
 		
 		convertView.setOnClickListener(new ItemClickWorkAround(position));
+		convertView.setOnLongClickListener(new DownloadMe(position));
 		return convertView;
+	}
+
+	private class DownloadMe implements OnLongClickListener {
+		int position = 0;
+
+		public DownloadMe(int position) {
+			super();
+			this.position = position;
+		}
+
+		public boolean onLongClick(View v) {
+			StoriesFragment.process(getContext(), getItem(position));
+			return false;
+		}
+
 	}
 
 	private class PlayerStart extends OnItemClick {
@@ -78,19 +95,18 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 		}
 
 	}
-	
-	
+
 	private class ItemClickWorkAround extends OnItemClick {
 		public ItemClickWorkAround(int position) {
 			super(position);
 		}
 
 		public void onClick(View v) {
-			StoriesFragment.startItemDescriptionActivity(getContext(), getItem(position));
+			StoriesFragment.startItemDescriptionActivity(getContext(),
+					getItem(position));
 		}
 
 	}
-
 
 	private abstract class OnItemClick implements OnClickListener {
 		int position;

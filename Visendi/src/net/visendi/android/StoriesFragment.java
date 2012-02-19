@@ -1,26 +1,36 @@
 package net.visendi.android;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URL;
+import java.text.MessageFormat;
+
 import net.visendi.android.adapter.StoryAdapter;
 import net.visendi.android.loaders.StoriesLoader;
 import net.visendi.android.model.Story;
 import net.visendi.android.model.Storys;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.net.Uri.Builder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.stanfy.app.service.DownloadsService;
+import com.stanfy.app.service.DownloadsService.Request;
+
 public class StoriesFragment extends ListFragment implements
 		LoaderCallbacks<Storys> {
 
+	private static final String MOCK = "mock";
 	private StoryAdapter adapter;
 	private String TAG = StoriesFragment.class.getSimpleName();
 
@@ -81,6 +91,33 @@ public class StoriesFragment extends ListFragment implements
 		Intent intent = new Intent(context, DetailedActivity.class);
 		intent.putExtra(Story.class.getSimpleName(), item);
 		context.startActivity(intent);
+	}
+
+	public static long process(Context context, final Story song) {
+		final long id = DownloadsService.nextId(context);
+		final Request request = new Request();
+		request.setId(id);
+		
+		String url = MessageFormat.format(
+				context.getString(R.string.zip_url_template),
+				song.getId());
+		request.setUri(url);
+		request.setTitle(song.getTitle());
+		request.setDescription(song.getAuthor());
+		request.setDestinationUri(Uri.fromFile(new File(
+				getDestinationDirectory(), song.getId())).toString());
+		final Intent requestIntent = new Intent(context, DownloadsService.class)
+				.setAction(DownloadsService.ACTION_ENQUEUE).putExtra(
+						DownloadsService.EXTRA_REQUEST, request);
+		context.startService(requestIntent);
+		return id;
+	}
+
+	private static File getDestinationDirectory() {
+		File externalStorageDirectory = Environment.getExternalStorageDirectory();
+		File res = new File(externalStorageDirectory, MOCK);
+		res.mkdir();
+		return res;
 	}
 
 	public void onLoaderReset(Loader<Storys> loader) {

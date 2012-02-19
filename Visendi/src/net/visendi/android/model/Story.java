@@ -11,6 +11,8 @@ public class Story implements Serializable {
 	private String author;
 	private String picture;
 	private String preview;
+	private String currency;
+	private int cost;
 
 	public String getId() {
 		return id;
@@ -66,6 +68,22 @@ public class Story implements Serializable {
 
 	public void setPreview(String preview) {
 		this.preview = preview;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 
 }
