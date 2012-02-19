@@ -196,6 +196,10 @@ public class DownloadsService extends Service {
 		Editor edit = sharedPreferences.edit();
 		edit.putStringSet(STORIES_IN_PROGRESS, storiesInProgress);
 		edit.commit();
+		
+
+		Log.d(TAG, "inProgressStory");
+
 	}
 
 	public void removeStoryFromProgress(long id) {
@@ -203,14 +207,16 @@ public class DownloadsService extends Service {
 		if (storiesInProgress.contains(stringId)) {
 			storiesInProgress.remove(stringId);
 			SharedPreferences sharedPreferences = getSharedPreferences(
-					STORIES_IN_PROGRESS, MODE_PRIVATE);
+					STORIES_IN_PROGRESS, MODE_WORLD_WRITEABLE);
 			Editor edit = sharedPreferences.edit();
 			edit.putStringSet(STORIES_IN_PROGRESS, storiesInProgress);
+
 			edit.commit();
 
+			Log.d(TAG, "removeStory");
 			storiesDownloaded.add(stringId);
 			SharedPreferences sharedPreferencesDown = getSharedPreferences(
-					STORIES_DOWNLOADED, MODE_PRIVATE);
+					STORIES_DOWNLOADED, MODE_WORLD_WRITEABLE);
 			sharedPreferencesDown.edit()
 					.putStringSet(STORIES_DOWNLOADED, storiesDownloaded)
 					.commit();

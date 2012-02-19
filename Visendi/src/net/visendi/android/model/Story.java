@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Story implements Serializable {
 
+	public final static  int DOWNLOADED = 1;
+	public final static int INPROGRESS = 2;
 	private String id;
 	private String title;
 	private String desc;
@@ -12,7 +14,11 @@ public class Story implements Serializable {
 	private String picture;
 	private String preview;
 	private String currency;
-	private int cost;
+	private int cost;	
+	private int status;
+
+	
+	
 
 	public String getId() {
 		return id;
@@ -84,6 +90,14 @@ public class Story implements Serializable {
 
 	public void setCost(int cost) {
 		this.cost = cost;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 }
