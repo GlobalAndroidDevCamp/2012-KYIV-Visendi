@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class DetailedActivity extends FragmentActivity {
+public class DetailedActivity extends FragmentActivity implements StoryInterface {
 	private Story item;
 
 	@Override
@@ -21,5 +21,9 @@ public class DetailedActivity extends FragmentActivity {
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		item = (Story)intent.getSerializableExtra(Story.class.getSimpleName());
+	}
+
+	public Story getStory() {
+		return item;
 	}
 }

@@ -69,7 +69,7 @@ public class StoryAdapter extends ArrayAdapter<Story> {
 
 		public boolean onLongClick(View v) {
 			StoriesFragment.process(getContext(), getItem(position));
-			return false;
+			return true;
 		}
 
 	}

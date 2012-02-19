@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
 import com.stanfy.app.service.DownloadsService;
@@ -69,6 +70,14 @@ public class StoriesFragment extends ListFragment implements
 					onItemClickListener);
 			setListAdapter(adapter);
 			getListView().setOnItemClickListener(onItemClickListener);
+			getListView().setOnItemLongClickListener(new OnItemLongClickListener() {
+
+				public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					StoriesFragment.process(getActivity(), adapter.getItem(arg2));
+					return false;
+				}
+			});
 		}
 	}
 
@@ -85,6 +94,7 @@ public class StoriesFragment extends ListFragment implements
 		Story item = adapter.getItem(position);
 		startItemDescriptionActivity(getActivity(), item);
 
+		
 	}
 
 	public static void startItemDescriptionActivity(Context context, Story item) {
@@ -123,5 +133,7 @@ public class StoriesFragment extends ListFragment implements
 	public void onLoaderReset(Loader<Storys> loader) {
 
 	}
+	
+	
 
 }
